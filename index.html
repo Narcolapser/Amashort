@@ -1,7 +1,28 @@
 <html>
+	<script>
+	function parse_url(val)
+	{
+		let shortened = document.getElementById("shortened");
+		if (val.toLowerCase().includes("amazon.com"))
+		{
+			let start = val.indexOf('/dp/') + 4;
+			let end = val.indexOf('/',start+1);
+			let indentifier = val.substring(start, end);
+			let base = "https://amzn.com/"
+			let url = base + indentifier;
+			shortened.href = url;
+			shortened.innerHTML = url;
+		}
+		else
+		{
+			shortened.innerHTML = "Not a valid amazon link";
+		}
+	}
+	</script>
 	<h1>Amazon Link shortener</h1>
 	<label for='link'>Link to shorten</label>
-	<input id='link'></input>
+	<input id='link' onchange="parse_url(this.value)"></input>
 	<p>Shortened link:</p>
-	<a id='shorened' href='amazon.com'>waiting...</a>
+	<a id='shortened' href='amazon.com'>waiting...</a>
+	<p>1</p>
 </html>

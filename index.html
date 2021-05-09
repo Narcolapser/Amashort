@@ -10,7 +10,7 @@
 			let indentifier = val.substring(start, end);
 			let base = "https://amzn.com/"
 			let url = base + indentifier;
-			shortened.href = url;
+			shortened.value = url;
 			shortened.innerHTML = url;
 		}
 		else
@@ -19,10 +19,14 @@
 		}
 	}
 	</script>
-	<h1>Amazon Link shortener</h1>
-	<label for='link'>Link to shorten</label>
-	<input id='link' onchange="parse_url(this.value)"></input>
-	<p>Shortened link:</p>
-	<a id='shortened' href='amazon.com'>waiting...</a>
-	<p>1</p>
+	<div style="display: flex; justify-content: center; align-items: center; height:100%; flex-direction: column">
+		<h1>Amazon Link shortener</h1>
+		<label style="border: 1px solid black;width: 50%;text-align: center;border-radius: 5px 5px 0px 0px;" for='link'>Paste Link</label>
+		<div style="border: 1px solid black;width: 50%;text-align: center;border-radius: 0px 0px 5px 5px; height:25px" >
+			<input style="width:100%; height:100%;" id='link' oninput="parse_url(this.value)"></input>
+		</div>
+		<br/>
+		<span style="border: 1px solid black;width: 50%;text-align: center;border-radius: 5px 5px 0px 0px;">Result:</span>
+		<input style="border: 1px solid black;width: 50%;text-align: center;border-radius: 0px 0px 5px 5px; height:25px" id='shortened' href='amazon.com'></input>
+	</div>
 </html>
